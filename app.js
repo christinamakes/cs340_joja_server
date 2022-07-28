@@ -14,21 +14,14 @@ PORT        = process.env.PORT || 9124;                 // Set a port number at 
     ROUTES
 */
 app.get('/', function(req, res)
-    {
-        // Define our queries
-        query1 = 'SELECT * FROM Members';
+    {  
+        let query1 = "SELECT * FROM Members;";               // Define our query
 
-        // Execute every query in an asynchronous manner, we want each query to finish before the next one starts
+        db.connection.query(query1, function(error, results, fields){    // Execute the query
 
-        // DROP TABLE...
-        db.connection.query(query1, function (err, results, fields){
-
-            
-                        // Send the results to the browser
-                        res.send(JSON.stringify(results));
-                    });
-                });
-                                     // requesting the web site.
+            res.send(JSON.stringify(results));                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });           // requesting the web site.
 
 /*
     LISTENER
