@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/christinamakes/cs340_joja_server/issues"
   },
-  "homepage": "https://github.com/christinamakes/cs340_joja_server#readme"
+  "homepage": "https://github.com/christinamakes/cs340_joja_server#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
