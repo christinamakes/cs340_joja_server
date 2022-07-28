@@ -15,9 +15,8 @@ PORT        = process.env.PORT || 9124;                 // Set a port number at 
 */
 app.get('/', function(req, res)
     {  
-        let query1 = "SELECT * FROM Members;";               // Define our query
 
-        db.connection.query(query1, function(error, results, fields){    // Execute the query
+        db.connection.query('SELECT * FROM Members;', function(error, results, fields){    // Execute the query
 
             res.send(JSON.stringify(results));                  // Render the index.hbs file, and also send the renderer
         })                                                      // an object where 'data' is equal to the 'rows' we
