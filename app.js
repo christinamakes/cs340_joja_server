@@ -7,9 +7,11 @@ var db = require('./database/db-connector')
     SETUP
 */
 var express = require('express');
+var cors = require('cors');
 var app     = express();
 PORT        = process.env.PORT || 9124;
 
+app.use(cors())
 /*
     ROUTES
 */
