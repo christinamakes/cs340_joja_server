@@ -1,14 +1,14 @@
 // App.js
 
 // Database
-var db = require('./database/db-connector')
+const db = require('./database/db-connector')
 
 /*
     SETUP
 */
-var express = require('express');
-var cors = require('cors');
-var app     = express();
+const express = require('express');
+const cors = require('cors');
+const app     = express();
 PORT        = process.env.PORT || 9124;
 
 app.use(cors())
