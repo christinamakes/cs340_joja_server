@@ -15,7 +15,7 @@ app.use(cors())
 /*
     ROUTES
 */
-app.get('/', function(req, res)
+app.get('/members', function(req, res)
     {  
         db.connection.query('SELECT * FROM Members;', function(error, results, fields){
             res.send(JSON.stringify(results));
