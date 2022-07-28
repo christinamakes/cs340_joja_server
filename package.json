@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/christinamakes/cs340_joja_server#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "forever": "^4.0.3"
   }
 }
