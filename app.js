@@ -24,16 +24,16 @@ app.get('/', function(req, res)
         // Execute every query in an asynchronous manner, we want each query to finish before the next one starts
 
         // DROP TABLE...
-        db.pool.query(query1, function (err, results, fields){
+        db.connection.query(query1, function (err, results, fields){
 
             // CREATE TABLE...
-            db.pool.query(query2, function(err, results, fields){
+            db.connection.query(query2, function(err, results, fields){
 
                 // INSERT INTO...
-                db.pool.query(query3, function(err, results, fields){
+                db.connection.query(query3, function(err, results, fields){
 
                     // SELECT *...
-                    db.pool.query(query4, function(err, results, fields){
+                    db.connection.query(query4, function(err, results, fields){
 
                         // Send the results to the browser
                         res.send(JSON.stringify(results));
