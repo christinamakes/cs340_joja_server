@@ -1,0 +1,19 @@
+{
+  "name": "joja_server",
+  "version": "1.0.0",
+  "description": "nodejs for JojaMart cs340 final project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christinamakes/cs340_joja_server.git"
+  },
+  "author": "Christina Moore and Devon Braner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christinamakes/cs340_joja_server/issues"
+  },
+  "homepage": "https://github.com/christinamakes/cs340_joja_server#readme"
+}
