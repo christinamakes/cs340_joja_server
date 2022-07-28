@@ -1,7 +1,7 @@
 // ./database/db-connector.js
 
 // Get an instance of mysql we can use in the app
-var mysql = require('mysql')
+const mysql = require('mysql')
 
 const connection = mysql.createPool({
     host: process.env.DBHOST,
