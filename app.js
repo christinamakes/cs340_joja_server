@@ -16,32 +16,19 @@ PORT        = process.env.PORT || 9124;                 // Set a port number at 
 app.get('/', function(req, res)
     {
         // Define our queries
-        query1 = 'DROP TABLE IF EXISTS diagnostic;';
-        query2 = 'CREATE TABLE diagnostic(id INT PRIMARY KEY AUTO_INCREMENT, text VARCHAR(255) NOT NULL);';
-        query3 = 'INSERT INTO diagnostic (text) VALUES ("MySQL is working!")';
-        query4 = 'SELECT * FROM diagnostic;';
+        query1 = 'SELECT * FROM Members';
 
         // Execute every query in an asynchronous manner, we want each query to finish before the next one starts
 
         // DROP TABLE...
         db.connection.query(query1, function (err, results, fields){
 
-            // CREATE TABLE...
-            db.connection.query(query2, function(err, results, fields){
-
-                // INSERT INTO...
-                db.connection.query(query3, function(err, results, fields){
-
-                    // SELECT *...
-                    db.connection.query(query4, function(err, results, fields){
-
+            
                         // Send the results to the browser
                         res.send(JSON.stringify(results));
                     });
                 });
-            });
-        });
-    });                                       // requesting the web site.
+                                     // requesting the web site.
 
 /*
     LISTENER
