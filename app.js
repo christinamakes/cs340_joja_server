@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended: true}))
 // SELECT ALL
 app.get('/members', function(req, res)
     {  
-        db.connection.query('SELECT * FROM Members;', function(error, results, fields){
+        db.connection.query('SELECT * FROM members;', function(error, results, fields){
             res.send(JSON.stringify(results));
         })
     });
@@ -30,7 +30,7 @@ app.get('/members', function(req, res)
 app.post('/add-member',function(req,res)
 {
     let data = req.body;
-    query1 = `INSERT INTO Members(member_name, member_email, member_address, member_phone_number) VALUES ('${data.member_name}','${data.member_email}','${data.member_address}','${data.member_phone}')`;
+    query1 = `INSERT INTO members(member_name, member_email, member_address, member_phone_number) VALUES ('${data.member_name}','${data.member_email}','${data.member_address}','${data.member_phone}')`;
     db.connection.query(query1, function(err,rows,fields){
         if(err){
             console.log(err)
@@ -38,7 +38,7 @@ app.post('/add-member',function(req,res)
         }
         else
         {
-            query2 = `SELECT * FROM Members;`;
+            query2 = `SELECT * FROM members;`;
             db.connection.query(query2, function(err,rows,fields) {
                 if(err) {
                     console.log(err);
