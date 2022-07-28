@@ -5,8 +5,8 @@ var mysql = require('mysql')
 
 const connection = mysql.createConnection({
     host: 'us-cdbr-east-06.cleardb.net',
-    user: 'bababd8c3b3f10',
-    password: 'f11ae7e8',
+    user: 'b2887cec102926',
+    password: 'dcf8abfe',
     database: '/heroku_dbdb373db7b79f6'
   });
   // open the MySQL connection
