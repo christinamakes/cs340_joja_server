@@ -1,5 +1,8 @@
 // App.js
 
+// Database
+var db = require('./database/db-connector')
+
 /*
     SETUP
 */
