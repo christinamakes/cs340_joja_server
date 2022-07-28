@@ -6,21 +6,19 @@ var db = require('./database/db-connector')
 /*
     SETUP
 */
-var express = require('express');   // We are using the express library for the web server
-var app     = express();            // We need to instantiate an express object to interact with the server in our code
-PORT        = process.env.PORT || 9124;                 // Set a port number at the top so it's easy to change in the future
+var express = require('express');
+var app     = express();
+PORT        = process.env.PORT || 9124;
 
 /*
     ROUTES
 */
 app.get('/', function(req, res)
     {  
-
-        db.connection.query('SELECT * FROM Members;', function(error, results, fields){    // Execute the query
-
-            res.send(JSON.stringify(results));                  // Render the index.hbs file, and also send the renderer
-        })                                                      // an object where 'data' is equal to the 'rows' we
-    });           // requesting the web site.
+        db.connection.query('SELECT * FROM Members;', function(error, results, fields){
+            res.send(JSON.stringify(results));
+        })
+    });
 
 /*
     LISTENER
