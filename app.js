@@ -30,7 +30,7 @@ app.get('/members', function(req, res)
 app.post('/add-member',function(req,res)
 {
     let data = req.body;
-    query1 = `INSERT INTO Members(name,email,address,phone) VALUES ('${data.name}','${data.email}','${data.address}','${data.phone}')`;
+    query1 = `INSERT INTO Members(member_name, member_email, member_address, member_phone_number) VALUES ('${data.name}','${data.email}','${data.address}','${data.phone}')`;
     db.connection.query(query1, function(err,rows,fields){
         if(err){
             console.log(err)
