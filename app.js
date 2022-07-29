@@ -70,10 +70,10 @@ app.delete('/delete-member/:id', function(req,res,next){
 // UPDATE MEMBER
 app.put('/update-member/:id', function(req,res,next){
     const data = req.body;
-    const queryUpdateMember = `UPDATE Member SET  WHERE member_id = ?`;
+    const queryUpdateMember = `UPDATE Member SET UPDATE Member SET member_address,member_email,member_phone_number = ? WHERE member_id = ? WHERE member_id = ?`;
 
           // Run the 1st query
-          db.pool.query(queryUpdateMember, [data.member_id,data.member_address,data.member_email,data.member_phone_number,data.member_name], function(error, rows, fields){
+          db.pool.query(queryUpdateMember, [data.member_address,data.member_email,data.member_phone_number,data.member_name,data.member_id], function(error, rows, fields){
               if (error) {
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
               console.log(error);
