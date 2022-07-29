@@ -60,8 +60,10 @@ app.delete('/delete-member/:id', function(req,res,next){
 
     db.connection.query(deleteMember, member_id, function(error, rows, fields){
         if (error) {
-
         res.sendStatus(400);
+        }
+        else {
+            res.sendStatus(200)
         }
 })});
 
