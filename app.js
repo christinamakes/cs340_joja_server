@@ -54,9 +54,9 @@ app.post('/add-member',function(req,res)
 });
 
 // DELETE MEMBER
-app.delete('/delete-member', function(req,res,next){
-  const data = req.body;
-  const memberID = parseInt(data.member_id);
+app.delete('/delete-member/:id', function(req,res,next){
+  const data = req.params.id;
+  const memberID = parseInt(data.id);
   const deleteMember = `DELETE FROM Member WHERE member_id = ?`;
 
     db.connection.query(deleteMember, [memberID], function(error, rows, fields){
@@ -65,6 +65,7 @@ app.delete('/delete-member', function(req,res,next){
         res.sendStatus(400);
         }
 })});
+
 /*
     LISTENER
 */
