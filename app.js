@@ -70,7 +70,7 @@ app.delete('/delete-member/:id', function(req,res,next){
 // UPDATE MEMBER
 app.put('/update-member/:id', function(req,res,next){
     const data = req.body;
-    const member_id = req.body.member_id;
+    const member_id = parseInt(req.body.member_id);
     const member_name = req.body.member_name;
     const member_address = req.body.member_address;
     const member_email = req.body.member_email;
