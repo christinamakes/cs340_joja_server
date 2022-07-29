@@ -55,11 +55,10 @@ app.post('/add-member',function(req,res)
 
 // DELETE MEMBER
 app.delete('/delete-member/:id', function(req,res,next){
-  const data = req.params.id;
-  const memberID = parseInt(data.id);
-  const deleteMember = `DELETE FROM Member WHERE member_id = ?`;
+  const member_id = req.params.id;
+  const deleteMember = `DELETE FROM Members WHERE member_id = ?`;
 
-    db.connection.query(deleteMember, [memberID], function(error, rows, fields){
+    db.connection.query(deleteMember, member_id, function(error, rows, fields){
         if (error) {
 
         res.sendStatus(400);
