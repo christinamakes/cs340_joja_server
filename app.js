@@ -78,7 +78,7 @@ app.put('/update-member/', function(req,res,next){
     const queryUpdateMember = `UPDATE Members SET ? WHERE member_id = ?`;
 
           // Run the 1st query
-          db.pool.query(queryUpdateMember, [{member_name:name,member_address:address,member_email:email,member_phone_number:phone_number},member_id], function(error, rows, fields){
+          db.connection.query(queryUpdateMember, [{member_name:name,member_address:address,member_email:email,member_phone_number:phone_number},member_id], function(error, rows, fields){
               if (error) {
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
               console.log(error);
