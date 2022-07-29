@@ -51,7 +51,20 @@ app.post('/add-member',function(req,res)
             })
         }
     })
-})
+});
+
+// DELETE MEMBER
+app.delete('/delete-member', function(req,res,next){
+  const data = req.body;
+  const memberID = parseInt(data.member_id);
+  const deleteMember = `DELETE FROM Member WHERE member_id = ?`;
+
+    db.connection.query(deleteMember, [memberID], function(error, rows, fields){
+        if (error) {
+
+        res.sendStatus(400);
+        }
+})});
 /*
     LISTENER
 */
