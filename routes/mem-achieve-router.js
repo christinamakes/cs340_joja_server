@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../database/db-connector')
 
+// GET MEMBER_ACHIEVEMENT
 router.get('/', function(req, res)
     {  
         db.connection.query('SELECT * FROM Mem_Achieve_Details;', function(error, results, fields){
@@ -9,7 +10,7 @@ router.get('/', function(req, res)
         })
     });
 
-// ADD MEMBER
+// ADD MEMBER_ACHIEVEMENT
 router.post('/add',function(req,res)
 {
     let data = req.body;
@@ -36,7 +37,7 @@ router.post('/add',function(req,res)
     })
 });
 
-// DELETE MEMBER
+// DELETE MEMBER_ACHIEVEMENT
 router.delete('/delete/:id', function(req,res,next){
   const member_id = req.params.id;
   const deleteMember = `DELETE FROM Members WHERE member_id = ?`;
@@ -49,27 +50,6 @@ router.delete('/delete/:id', function(req,res,next){
             res.sendStatus(200)
         }
 })});
-
-// UPDATE MEMBER
-router.put('/update', function(req,res,next){
-    const data = req.body;
-    const member_id = parseInt(req.body.member_id);
-    const name = req.body.member_name;
-    const address = req.body.member_address;
-    const email = req.body.member_email;
-    const phone_number = req.body.member_phone_number;
-    const queryUpdateMember = `UPDATE Members SET ? WHERE member_id = ?`;
-
-          // Run the 1st query
-          db.connection.query(queryUpdateMember, [{member_name:name,member_address:address,member_email:email,member_phone_number:phone_number},member_id], function(error, rows, fields){
-              if (error) {
-              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log(error);
-              res.sendStatus(400);
-              } else {
-                  res.sendStatus(200);
-              }
-  })});
 
 
   module.exports = router
