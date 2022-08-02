@@ -3,6 +3,7 @@
 // Database
 const db = require('./database/db-connector')
 const members = require('./routes/member-router')
+const memAch = require('./routes/mem-achieve-router')
 
 /*
     SETUP
@@ -20,6 +21,8 @@ app.use(express.urlencoded({extended: true}))
 */
 // MEMBERS
 app.use('/members', members)
+// MEMBER ACHIEVEMENT
+app.use('/member-achievements', memAch)
 
 
 /*
