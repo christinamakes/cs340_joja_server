@@ -4,6 +4,9 @@
 const db = require('./database/db-connector')
 const members = require('./routes/member-router')
 const memAch = require('./routes/mem-achieve-router')
+const products = require(`./routes/product-router`)
+const employees = require(`./routes/employee-router`)
+const seasons = require(`./routes/seasons-router`)
 
 /*
     SETUP
@@ -23,7 +26,15 @@ app.use(express.urlencoded({extended: true}))
 app.use('/members', members)
 // MEMBER ACHIEVEMENT
 app.use('/member-achievements', memAch)
+// EMPLOYEES
+app.use('/employees', employees)
+// PRODUCTS
+app.use('/products', products)
+// SEASONS
+app.use('/seasons', seasons)
+// SALES
 
+// SALES DETAILS
 
 /*
     LISTENER
