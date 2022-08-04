@@ -7,6 +7,7 @@ const memAch = require('./routes/mem-achieve-router')
 const products = require(`./routes/product-router`)
 const employees = require(`./routes/employee-router`)
 const seasons = require(`./routes/seasons-router`)
+const achievements = require('./routes/achievements-router')
 
 /*
     SETUP
@@ -26,6 +27,8 @@ app.use(express.urlencoded({extended: true}))
 app.use('/members', members)
 // MEMBER ACHIEVEMENT
 app.use('/member-achievements', memAch)
+// ACHIEVEMENTS
+app.use('/achievements', achievements)
 // EMPLOYEES
 app.use('/employees', employees)
 // PRODUCTS
