@@ -4,7 +4,8 @@ const db = require('../database/db-connector')
 
 router.get('/', function(req, res)
     {  
-        db.connection.query('SELECT Sales.order_number AS order_number, CONCAT(Members.member_id, " -- ", Members.member_name) AS member_id_name, CONCAT(Employees.employee_id, " -- ", Employees.employee_name) AS employee_id_name, CONCAT(Products.product_id, " -- ", Products.product_name) AS product_id_name, SalesDetails.quantity AS quantity, Sales.invoice_total AS invoice_total, CASE WHEN SalesDetails.order_type = 0 THEN CONCAT(SalesDetails.order_type, " -- ", "In Person") ELSE CONCAT(SalesDetails.order_type, " -- ", "Online") AS order_type_name, Sales.purchase_date AS purchase_date FROM SalesDetails JOIN Sales ON Sales.order_numer = SalesDetails.order_number LEFT JOIN Employees ON Sales.employee_id = Employees.employee_id JOIN Members ON Sales.member_id = Members.member_id JOIN Products ON Products.product_id = SalesDetails.product_id ORDER BY Sales.order_number;', function(error, results, fields){
+        // 'SELECT Sales.order_number AS order_number, CONCAT(Members.member_id, " -- ", Members.member_name) AS member_id_name, CONCAT(Employees.employee_id, " -- ", Employees.employee_name) AS employee_id_name, CONCAT(Products.product_id, " -- ", Products.product_name) AS product_id_name, SalesDetails.quantity AS quantity, Sales.invoice_total AS invoice_total, CASE WHEN SalesDetails.order_type = 0 THEN CONCAT(SalesDetails.order_type, " -- ", "In Person") ELSE CONCAT(SalesDetails.order_type, " -- ", "Online") AS order_type_name, Sales.purchase_date AS purchase_date FROM SalesDetails JOIN Sales ON Sales.order_numer = SalesDetails.order_number LEFT JOIN Employees ON Sales.employee_id = Employees.employee_id JOIN Members ON Sales.member_id = Members.member_id JOIN Products ON Products.product_id = SalesDetails.product_id ORDER BY Sales.order_number;'
+        db.connection.query('SELECT * FROM SalesDetails;', function(error, results, fields){
             res.send(JSON.stringify(results));
         })
     });
@@ -13,7 +14,7 @@ router.get('/', function(req, res)
 router.post('/s/add',function(req,res)
 {
     let data = req.body;
-    query1 = `INSERT INTO Sales(member_id, employee_id, purchase_date, invoice_total) VALUES ('${data.member_id}', NULLIF('${data.employee_id}', ${undefined}),'${data.purchase_date}','${data.invoice_total}')`;
+    query1 = `INSERT INTO Sales(member_id, employee_id, purchase_date, invoice_total) VALUES ('${data.member_id}', NULLIF('${data.employee_id}, '${undefined}')','${data.purchase_date}','${data.invoice_total}')`;
     db.connection.query(query1, function(err,rows,fields){
         if(err){
             console.log(err)
@@ -21,7 +22,7 @@ router.post('/s/add',function(req,res)
         }
         else
         {
-            query2 = 'SELECT Sales.order_number AS order_number, CONCAT(Members.member_id, " -- ", Members.member_name) AS member_id_name, CONCAT(Employees.employee_id, " -- ", Employees.employee_name) AS employee_id_name, CONCAT(Products.product_id, " -- ", Products.product_name) AS product_id_name, SalesDetails.quantity AS quantity, Sales.invoice_total AS invoice_total, CASE WHEN SalesDetails.order_type = 0 THEN CONCAT(SalesDetails.order_type, " -- ", "In Person") ELSE CONCAT(SalesDetails.order_type, " -- ", "Online") AS order_type_name, Sales.purchase_date AS purchase_date FROM SalesDetails JOIN Sales ON Sales.order_numer = SalesDetails.order_number LEFT JOIN Employees ON Sales.employee_id = Employees.employee_id JOIN Members ON Sales.member_id = Members.member_id JOIN Products ON Products.product_id = SalesDetails.product_id ORDER BY Sales.order_number;';
+            query2 = 'SELECT * FROM Sales;';
             db.connection.query(query2, function(err,rows,fields) {
                 if(err) {
                     console.log(err);
