@@ -44,10 +44,10 @@ router.put('/update', function(req,res,next){
     const price = req.body.product_price;
     const season_code = req.body.season_code;
     const number_in_stock = req.body.number_in_stock;
-    const queryUpdateEmployee = `UPDATE Products SET ? WHERE product_id = ?`;
+    const queryUpdateProduct = `UPDATE Products SET ? WHERE product_id = ?`;
 
           // Run the 1st query
-          db.connection.query(queryUpdateEmployee, [{product_name:name,product_price:price,season_code:season_code,number_in_stock:number_in_stock},product_id], function(error, rows, fields){
+          db.connection.query(queryUpdateProduct, [{product_name:name,product_price:price,season_code:season_code,number_in_stock:number_in_stock},product_id], function(error, rows, fields){
               if (error) {
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
               console.log(error);

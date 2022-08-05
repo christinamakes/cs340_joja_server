@@ -38,7 +38,7 @@ router.post('/add',function(req,res)
 
 // DELETE EMPLOYEE
 router.delete('/delete/:id', function(req,res,next){
-  const member_id = req.params.id;
+  const employee_id = req.params.id;
   const deleteEmployee = `DELETE FROM Employees WHERE employee_id = ?`;
 
     db.connection.query(deleteEmployee, employee_id, function(error, rows, fields){
