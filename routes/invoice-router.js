@@ -11,7 +11,7 @@ router.get('/', function(req, res)
     });
 
 // ADD SALE
-router.post('/s/add',function(req,res)
+router.post('/add-s',function(req,res)
 {
     let data = req.body;
     query1 = `INSERT INTO Sales(member_id, employee_id, purchase_date, invoice_total) VALUES ('${data.member_id}', NULLIF('${data.employee_id}, ${undefined}),'${data.purchase_date}','${data.invoice_total}')`;
@@ -38,7 +38,7 @@ router.post('/s/add',function(req,res)
 });
 
 // ADD SALES DETAIL
-router.post('/sd/add',function(req,res)
+router.post('/add-sd',function(req,res)
 {
     let data = req.body;
     query1 = `INSERT INTO SalesDetails(product_id, order_number, quantity, order_type) VALUES ('${data.product_id}', '${data.order_number},'${data.quantity}','${data.order_type}')`;
