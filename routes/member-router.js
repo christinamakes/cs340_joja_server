@@ -19,11 +19,11 @@ router.get('/search', function (req, res) {
     console.log(search)
     const searchEmployees = `SELECT * FROM Members WHERE member_name LIKE "${search}%"`
 
-    db.connection.query(searchEmployees, function (req, res, err) {
+    db.connection.query(searchEmployees, function (req, results, err) {
         if(err) {
             res.sendStatus(400)
         } else {
-        res.send(JSON.stringify(res));
+        res.send(JSON.stringify(results));
         }
     })
 })
