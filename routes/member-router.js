@@ -23,7 +23,7 @@ router.get('/search', function (req, res) {
         if(err) {
             res.sendStatus(400)
         } else {
-        res.send(JSON.stringify(results));
+        return res.render(JSON.stringify(results));
         }
     })
 })
