@@ -37,7 +37,7 @@ app.use('/products', products)
 // SEASONS
 app.use('/seasons', seasons)
 // SALES
-//app.use('/sales', invoices)
+app.use('/sales', invoices)
 // SALES DETAILS
 app.use('/sales-details', invoices)
 
