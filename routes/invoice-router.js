@@ -48,7 +48,7 @@ router.post('/add-s',function(req,res)
 router.post('/add-sd',function(req,res)
 {
     let data = req.body;
-    query1 = `INSERT INTO SalesDetails(product_id, order_number, quantity, order_type) VALUES ('${data.product_id}', '${data.order_number},'${data.quantity}','${data.order_type}')`;
+    query1 = `INSERT INTO SalesDetails(product_id, order_number, quantity, order_type) VALUES ('${data.product_id}', '${data.order_number}','${data.quantity}','${data.order_type}')`;
     db.connection.query(query1, function(err,rows,fields){
         if(err){
             console.log(err)
