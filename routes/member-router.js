@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 router.get('/search', function (req, res) {
     const search = req.query.q
     console.log(search)
-    const searchEmployees = `SELECT * FROM Members WHERE member_name LIKE '%${search}%'`
+    const searchEmployees = `SELECT * FROM Members WHERE member_name LIKE "${search}%"``
 
     db.connection.query(searchEmployees, function (req, res, err) {
         if (err) {
