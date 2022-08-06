@@ -72,39 +72,49 @@ router.post('/add-sd',function(req,res)
 });
 
 // UPDATE SALES AND SALES DETAILS
-router.put('/update', function(req,res,next){
+router.put('/update-sd', function(req,res,next){
     const data = req.body;
     const sales_details_id = parseInt(req.body.sales_details_id);
     const product_id = parseInt(req.body.product_id);
+    const order_number = parseInt(req.body.order_number);
+    const quantity = req.body.quantity;
+    const queryUpdateSalesDetail = `UPDATE SalesDetails SET ? WHERE sales_details_id = ?`;
+
+    db.connection.query(queryUpdateSalesDetail, [{product_id:product_id,order_number:order_number,quantity:quantity,order_type:order_type},sales_details_id], function(error, rows, fields){
+        if (error) {
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.put('/update-s', function(req,res,next){
+    const data = req.body;
     const member_id = parseInt(req.body.member_id);
     const employee_id = parseInt(req.body.employee_id);
     const order_number = parseInt(req.body.order_number);
-    const quantity = req.body.quantity;
     const purchase_date = req.body.purchase_date;
     const invoice_total = req.body.invoice_total;
-    const queryUpdateSalesDetail = `UPDATE SalesDetails SET ? WHERE sales_details_id = ?`;
+
+    if (employee_id === undefined) {
+        employee_id = 'NULL'
+    }
+
     const queryUpdateSale = `UPDATE Sales SET ? WHERE order_number = ?`;
 
           // Run the 1st query
-        db.connection.query(queryUpdateSale, [{member_id:member_id,employee_id:employee_id,purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
-            if (error) {
-              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-                console.log(error);
-                res.sendStatus(400);
-            } else {
-                res.sendStatus(200);
-            }
-        });
-
-        db.connection.query(queryUpdateSalesDetail, [{product_id:product_id,order_number:order_number,quantity:quantity,order_type:order_type},sales_details_id], function(error, rows, fields){
-            if (error) {
-              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-                console.log(error);
-                res.sendStatus(400);
-            } else {
-                res.sendStatus(200);
-            }
-  });
+    db.connection.query(queryUpdateSale, [{member_id:member_id,employee_id:employee_id,purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
+        if (error) {
+          // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error);
+             res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
 });
 
   module.exports = router;
