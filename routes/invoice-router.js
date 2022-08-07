@@ -21,7 +21,7 @@ router.get('/sd', function(req, res)
 router.post('/add-s',function(req,res)
 {
     let data = req.body;
-    query1 = `INSERT INTO Sales(member_id, employee_id, purchase_date, invoice_total) VALUES ('${data.member_id}', NULLIF('${data.employee_id}', '${undefined}'),'${data.purchase_date}','${data.invoice_total}')`;
+    query1 = `INSERT INTO Sales(member_id, employee_id, purchase_date, invoice_total) VALUES ('${data.member_id}', NULLIF('${data.employee_id}', '0'),'${data.purchase_date}','${data.invoice_total}')`;
     db.connection.query(query1, function(err,rows,fields){
         if(err){
             console.log(err)
