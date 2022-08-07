@@ -93,18 +93,15 @@ router.put('/update-sd', function(req,res,next){
 
 router.put('/update-s', function(req,res,next){
     const data = req.body;
-    let employee_id
-    if (req.body.employee_id === undefined) {
-        employee_id = 'NULL'
-    } else {
-        employee_id = parseInt(req.body.employee_id);
-    }
     const member_id = parseInt(req.body.member_id);
+    let employee_id = parseInt(req.body.employee_id);
     const order_number = parseInt(req.body.order_number);
     const purchase_date = req.body.purchase_date;
     const invoice_total = req.body.invoice_total;
 
-    
+    if (employee_id == 0) {
+        employee_id = 'NULL'
+    }
 
     const queryUpdateSale = `UPDATE Sales SET ? WHERE order_number = ?`;
 
