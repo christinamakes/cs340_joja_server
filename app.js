@@ -8,7 +8,8 @@ const products = require(`./routes/product-router`)
 const employees = require(`./routes/employee-router`)
 const seasons = require(`./routes/seasons-router`)
 const achievements = require('./routes/achievements-router')
-const invoices = require('./routes/invoice-router')
+const sales = require('./routes/sales-router')
+const salesDetails = require('./routes/sales-details-router')
 
 /*
     SETUP
@@ -37,9 +38,9 @@ app.use('/products', products)
 // SEASONS
 app.use('/seasons', seasons)
 // SALES
-app.use('/sales', invoices)
+app.use('/sales', sales)
 // SALES DETAILS
-app.use('/sales-details', invoices)
+app.use('/sales-details', salesDetails)
 
 /*
     LISTENER
