@@ -5,7 +5,7 @@ const db = require('../database/db-connector')
 // GET MEMBER_ACHIEVEMENT
 router.get('/', function(req, res)
     {  
-        const query = `SELECT Members.member_name, Achievements.achievement_title FROM Members, Achievements INNER JOIN Mem_Achieve_Details ON Members.member_id=Mem_Achieve_Details.member_id;`
+        const query = `SELECT Members.member_name, Achievements.achievement_title FROM Members, Achievements INNER JOIN Mem_Achieve_Details ON Mem_Achieve_Details.achievement_id=Achievements.achievements_id;`
         db.connection.query(query, function(error, results, fields){
             res.send(JSON.stringify(results));
         })
