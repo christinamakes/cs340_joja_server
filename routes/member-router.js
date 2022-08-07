@@ -55,7 +55,15 @@ router.delete('/delete/:id', function (req, res, next) {
         if (error) {
             res.sendStatus(400);
         } else {
-            res.sendStatus(200)
+            query2 = `SELECT * FROM Members;`;
+            db.connection.query(query2, function (err, rows, fields) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(400);
+                } else {
+                    res.send(JSON.stringify(rows));
+                }
+            })
         }
     })
 });
