@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
 // Adapted from:
 // Source URL: https://stackoverflow.com/questions/58711245/how-to-build-a-search-bar-using-nodejs-and-sql-as-the-database
 router.get('/search', function (req, res) {
-    const query = `SELECT * FROM Members`
+    const query = `SELECT * FROM Members WHERE member_name LIKE '%name%';`
     console.log(query)
     db.connection.query(query, function (req, results, err) {
         if (err) {
