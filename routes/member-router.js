@@ -20,7 +20,7 @@ router.get('/search', function (req, res) {
             console.log(err);
             res.sendStatus(400);
         } else {
-            res.send(JSON.stringify(rows));
+            res.send(Object.values(JSON.parse(JSON.stringify(rows))));
         }
     })
 })
