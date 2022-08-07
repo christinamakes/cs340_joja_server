@@ -20,7 +20,8 @@ router.get('/search', function (req, res) {
             console.log(err);
             res.sendStatus(400);
         } else {
-            console.log(JSON.stringify(rows[0]));
+            const searchRes = results.members[0];
+            res.send(searchRes)
         }
     })
 })
