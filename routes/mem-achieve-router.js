@@ -5,7 +5,9 @@ const db = require('../database/db-connector')
 // GET MEMBER_ACHIEVEMENT
 router.get('/', function (req, res) {
     const query = `SELECT 
+        m.member_id,
         m.member_name, 
+        a.achievement_id,
         a.achievement_title
    FROM Mem_Achieve_Details s
    JOIN Members m on m.member_id = s.member_id
@@ -40,7 +42,7 @@ router.post('/add', function (req, res) {
 // DELETE MEMBER_ACHIEVEMENT
 router.delete('/delete/:id', function (req, res, next) {
     const member_id = req.params.id;
-    const deleteMember = `DELETE FROM Mem_Achieve_Details WHERE member_name = ?`;
+    const deleteMember = `DELETE FROM Mem_Achieve_Details WHERE member_id = ?`;
 
     db.connection.query(deleteMember, member_id, function (error, rows, fields) {
         if (error) {
