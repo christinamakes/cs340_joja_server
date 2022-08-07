@@ -8,6 +8,17 @@ router.get('/', function(req, res)
             res.send(JSON.stringify(results));
         })
     });
+// Citation for the following query:
+// Date: 07/2022
+// Adapted from:
+// Source URL: https://stackoverflow.com/questions/58711245/how-to-build-a-search-bar-using-nodejs-and-sql-as-the-database
+router.get('/search', function (req, res) {
+    const search = req.query.q
+    const query = `SELECT * FROM Employees WHERE (employee_id LIKE '%${search}%' OR employee_name LIKE '%${search}%' OR employee_email LIKE '%${search}%' OR employee_phone_number LIKE '%${search}%' OR member_hourly_wage LIKE '%${search}%')`
+    db.connection.query(query, function (error, results, fields) {
+        res.send(JSON.stringify(results));
+    })
+});
 
 // ADD EMPLOYEE
 router.post('/add',function(req,res)
