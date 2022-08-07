@@ -40,7 +40,7 @@ router.post('/add', function (req, res) {
 // DELETE MEMBER_ACHIEVEMENT
 router.delete('/delete/:id', function (req, res, next) {
     const member_id = req.params.id;
-    const deleteMember = `DELETE FROM Members WHERE member_id = ?`;
+    const deleteMember = `DELETE FROM Mem_Achieve_Details WHERE member_name = ?`;
 
     db.connection.query(deleteMember, member_id, function (error, rows, fields) {
         if (error) {
