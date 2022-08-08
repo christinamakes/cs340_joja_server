@@ -39,7 +39,10 @@ router.post('/add-s',function(req,res)
 router.put('/update-s', function(req,res,next){
     const data = req.body;
     const member_id = parseInt(req.body.member_id);
-    const employee_id = (req.body.employee_id == '0' ? 'NULL' : parseInt(req.body.employee_id));
+    let employee_id = parseInt(req.body.employee_id);
+    if (employee_id === 0) {
+        employee_id = 'NULL'
+    }
     const order_number = parseInt(req.body.order_number);
     const purchase_date = req.body.purchase_date;
     const invoice_total = parseInt(req.body.invoice_total);
