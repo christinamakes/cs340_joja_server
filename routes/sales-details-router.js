@@ -47,7 +47,7 @@ router.put('/update-sd', function(req,res){
     db.connection.query(queryUpdateSalesDetail, [{product_id:product_id,order_number:order_number,quantity:quantity,order_type:order_type},sales_details_id], function(error, rows, fields){
         if (error) {
             // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-            console.log(error);
+            console.log(error, req.body);
             res.sendStatus(400);
         } else {
             res.sendStatus(200);
