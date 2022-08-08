@@ -42,9 +42,13 @@ router.put('/update-sd', function(req,res){
     const product_id = parseInt(req.body.product_id);
     const order_number = parseInt(req.body.order_number);
     const quantity = parseInt(req.body.quantity);
-    const queryUpdateSalesDetail = `UPDATE SalesDetails SET ? WHERE sales_details_id = ?`;
+    const queryUpdateSalesDetail = `UPDATE SalesDetails SET 
+                                    product_id = ${product_id},
+                                    order_number = ${order_number},
+                                    quantity = ${quantity}
+                                    WHERE sales_details_id = ${sales_details_id}`;
 
-    db.connection.query(queryUpdateSalesDetail, [{product_id:product_id,order_number:order_number,quantity:quantity,order_type:order_type},sales_details_id], function(error, rows, fields){
+    db.connection.query(queryUpdateSalesDetail, function(error, rows, fields){
         if (error) {
             // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
             console.log(error, req.body);
