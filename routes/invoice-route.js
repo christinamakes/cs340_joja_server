@@ -27,3 +27,5 @@ router.get('/', function(req, res){
             res.send(JSON.stringify(results));
         })
     });
+
+module.exports = router;
