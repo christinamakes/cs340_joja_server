@@ -12,6 +12,7 @@ const seasons = require(`./routes/seasons-router`)
 const achievements = require('./routes/achievements-router')
 const sales = require('./routes/sales-router')
 const salesDetails = require('./routes/sales-details-router')
+const invoices = require('./routes/invoice-route')
 
 /*
     SETUP
@@ -43,7 +44,8 @@ app.use('/seasons', seasons)
 app.use('/sales', sales)
 // SALES DETAILS
 app.use('/sales-details', salesDetails)
-
+// INVOICE VIEW
+app.use('/invoices', invoices)
 
 app.listen(PORT, function(){
 });
