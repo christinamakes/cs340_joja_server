@@ -64,7 +64,7 @@ router.put('/update-s', function(req,res,next){
                 res.sendStatus(200);
             }
         });
-    } else {
+    } else if (employee_id === '0') {
         db.connection.query(queryUpdateSale, function(error, rows, fields){
             if (error) {
                 // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
