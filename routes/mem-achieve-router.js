@@ -11,7 +11,8 @@ router.get('/', function (req, res) {
         a.achievement_title
    FROM Mem_Achieve_Details s
    JOIN Members m on m.member_id = s.member_id
-   JOIN Achievements a on a.achievement_id = s.achievement_id`
+   JOIN Achievements a on a.achievement_id = s.achievement_id
+   ORDER BY m.member_id;`
     db.connection.query(query, function (error, results, fields) {
         res.send(JSON.stringify(results));
     })
