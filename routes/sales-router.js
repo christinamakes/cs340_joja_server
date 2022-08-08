@@ -47,9 +47,9 @@ router.put('/update-s', function(req,res,next){
 
     const queryUpdateSale = `UPDATE Sales SET 
                             member_id = '${data.member_id}',
-                            employee_id = NULL,
+                            employee_id = NULLIF('${data.employee_id}', '0'),
                             purchase_date = '${purchase_date}',
-                            invoice_total = '${invoice_total}' WHERE order_number = ?`;
+                            invoice_total = '${invoice_total}' WHERE order_number = '${order_number}'`;
 
     const queryUpdateSale2 = `UPDATE Sales SET ? WHERE order_number = ?`;
           // Run the 1st query
