@@ -9,8 +9,7 @@ router.get('/', function (req, res) {
 });
 
 // SEARCH MEMBER
-
-// Citation for the following query:
+// CITATION:
 // Date: 07/2022
 // Adapted from:
 // Source URL: https://stackoverflow.com/questions/58711245/how-to-build-a-search-bar-using-nodejs-and-sql-as-the-database
@@ -21,8 +20,6 @@ router.get('/search', function (req, res) {
         res.send(JSON.stringify(results));
     })
 });
-
-
 
 // ADD MEMBER
 router.post('/add', function (req, res) {
@@ -78,7 +75,6 @@ router.put('/update', function (req, res, next) {
     const phone_number = req.body.member_phone_number;
     const queryUpdateMember = `UPDATE Members SET ? WHERE member_id = ?`;
 
-    // Run the 1st query
     db.connection.query(queryUpdateMember, [{
         member_name: name,
         member_address: address,
@@ -86,7 +82,6 @@ router.put('/update', function (req, res, next) {
         member_phone_number: phone_number
     }, member_id], function (error, rows, fields) {
         if (error) {
-            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
             console.log(error);
             res.sendStatus(400);
         } else {
