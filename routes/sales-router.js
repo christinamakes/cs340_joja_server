@@ -42,7 +42,7 @@ router.put('/update-s', function(req,res,next){
     const employee_id = (req.body.employee_id === '0' ? 'NULL' : parseInt(req.body.employee_id));
     const order_number = parseInt(req.body.order_number);
     const purchase_date = req.body.purchase_date;
-    const invoice_total = req.body.invoice_total;
+    const invoice_total = parseInt(req.body.invoice_total);
 
     const queryUpdateSale = `UPDATE Sales SET ? WHERE order_number = ?`;
 
