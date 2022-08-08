@@ -41,7 +41,7 @@ router.put('/update-sd', function(req,res,next){
     const sales_details_id = parseInt(req.body.sales_details_id);
     const product_id = parseInt(req.body.product_id);
     const order_number = parseInt(req.body.order_number);
-    const quantity = req.body.quantity;
+    const quantity = parseInt(req.body.quantity);
     const queryUpdateSalesDetail = `UPDATE SalesDetails SET ? WHERE sales_details_id = ?`;
 
     db.connection.query(queryUpdateSalesDetail, [{product_id:product_id,order_number:order_number,quantity:quantity,order_type:order_type},sales_details_id], function(error, rows, fields){
