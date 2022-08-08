@@ -55,7 +55,7 @@ router.put('/update-s', function(req,res,next){
           // Run the 1st query
     if (employee_id === null) {
         
-        db.connection.query(queryUpdateSale, [{member_id:member_id, purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
+        db.connection.query(queryUpdateSale2, [{member_id:member_id, purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
             if (error) {
                 // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
                 console.log(error);
