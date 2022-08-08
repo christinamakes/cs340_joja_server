@@ -39,7 +39,7 @@ router.post('/add-s',function(req,res)
 router.put('/update-s', function(req,res,next){
     const data = req.body;
     const member_id = parseInt(req.body.member_id);
-    let employee_id = data.employee_id
+    let employee_id = data.employee_id;
    
     const order_number = parseInt(req.body.order_number);
     const purchase_date = req.body.purchase_date;
@@ -65,7 +65,7 @@ router.put('/update-s', function(req,res,next){
             }
         });
     } else {
-        db.connection.query(queryUpdateSale, order_number, function(error, rows, fields){
+        db.connection.query(queryUpdateSale, function(error, rows, fields){
             if (error) {
                 // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
                 console.log(error);
