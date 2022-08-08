@@ -74,6 +74,16 @@ router.put('/update-s', function(req,res,next){
                 res.sendStatus(200);
             }
         });
+    } else {
+        db.connection.query(queryUpdateSale2, [{member_id:member_id, employee_id:parseInt(employee_id),purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
+            if (error) {
+                // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                console.log(error);
+                res.sendStatus(400);
+            } else {
+                res.sendStatus(200);
+            }
+        });
     }
 });
 
