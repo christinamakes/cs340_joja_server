@@ -1,4 +1,6 @@
-// App.js
+// CITATION
+// ADAPTED FROM:
+// URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app
 
 // Database
 const db = require('./database/db-connector')
@@ -42,9 +44,6 @@ app.use('/sales', sales)
 // SALES DETAILS
 app.use('/sales-details', salesDetails)
 
-/*
-    LISTENER
-*/
-app.listen(PORT, function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
-    console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
+
+app.listen(PORT, function(){
 });
