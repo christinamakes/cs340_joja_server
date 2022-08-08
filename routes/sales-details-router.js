@@ -36,7 +36,7 @@ router.post('/add-sd',function(req,res){
     })
 });
 
-router.put('/update-sd', function(req,res,next){
+router.put('/update-sd', function(req,res){
     const data = req.body;
     const sales_details_id = parseInt(req.body.sales_details_id);
     const product_id = parseInt(req.body.product_id);
