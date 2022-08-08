@@ -39,7 +39,7 @@ router.post('/add-s',function(req,res)
 router.put('/update-s', function(req,res,next){
     const data = req.body;
     const member_id = parseInt(req.body.member_id);
-    const employee_id = (req.body.employee_id === '0' ? 'NULL' : parseInt(req.body.employee_id));
+    const employee_id = parseInt(req.body.employee_id);
     const order_number = parseInt(req.body.order_number);
     const purchase_date = req.body.purchase_date;
     const invoice_total = req.body.invoice_total;
@@ -47,7 +47,7 @@ router.put('/update-s', function(req,res,next){
     const queryUpdateSale = `UPDATE Sales SET ? WHERE order_number = ?`;
 
           // Run the 1st query
-    db.connection.query(queryUpdateSale, [{member_id:member_id,employee_id:employee_id,purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
+    db.connection.query(queryUpdateSale, [{member_id:member_id,employee_id:(employee_id === 0 ? 'NULL' : employee_id),purchase_date:purchase_date,invoice_total:invoice_total},order_number], function(error, rows, fields){
         if (error) {
           // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
             console.log(error);
