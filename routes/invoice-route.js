@@ -18,9 +18,9 @@ router.get('/', function(req, res){
             sd.order_type,
             s.purchase_date
         FROM SalesDetails sd
-        LEFT JOIN Sales s ON sd.order_number = s.order_number
+        JOIN Sales s ON sd.order_number = s.order_number
         JOIN Members m ON s.member_id = m.member_id
-        JOIN Employees e ON s.employee_id = e.employee_id
+        LEFT JOIN Employees e ON s.employee_id = e.employee_id
         JOIN Products p ON sd.product_id = p.product_id
         ORDER BY s.order_number;`
         
