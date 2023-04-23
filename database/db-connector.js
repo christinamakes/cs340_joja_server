@@ -3,11 +3,11 @@
 // Get an instance of mysql we can use in the app
 const mysql = require('mysql')
 
-const connection = mysql.createPool({
+const connection = mysql.createConnection({
     host: process.env.DBHOST,
     user: process.env.DBUSER,
     password: process.env.DBPASSWORD,
-    database: process.env.DBDATABASE
+    database: process.env.DBDATABASE,
   });
 
 // Export it for use in our applicaiton
