@@ -6,12 +6,7 @@ const mysql = require('mysql')
 
 console.log(process.env.DBDATABASE)
 
-const connection = mysql.createPool({
-    host: process.env.DBHOST,
-    user: process.env.DBUSER,
-    password: process.env.DBPASSWORD,
-    database: process.env.DBDATABASE
-  });
+const connection = mysql.createPool(process.env.MYSQL_URL);
 
 // Export it for use in our applicaiton
 module.exports.connection = connection;
