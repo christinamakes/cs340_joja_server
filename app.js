@@ -47,5 +47,5 @@ app.use('/sales-details', salesDetails)
 // INVOICE VIEW
 app.use('/invoices', invoices)
 
-app.listen(PORT, function(){
+app.listen(PORT, '0.0.0.0', function(){
 });
